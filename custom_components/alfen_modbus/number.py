@@ -126,8 +126,9 @@ class AlfenNumber(NumberEntity):
     def update_value(self):
         builder = BinaryPayloadBuilder(byteorder=Endian.BIG, wordorder=Endian.BIG)
         value = self._hub.data[self._key]
-        if "socket_"+str(self._socket)+"_actualMaxCurrent" in self._hub.data:
-            self._attr_native_max_value = self._hub.data["socket_"+str(self._socket)+"_actualMaxCurrent"]
+        #if "socket_"+str(self._socket)+"_actualMaxCurrent" in self._hub.data:
+        #    self._attr_native_max_value = self._hub.data["socket_"+str(self._socket)+"_actualMaxCurrent"]
+        self._attr_native_max_value = 16 
         _LOGGER.debug("Updating value to: %f",value)
         if self._fmt == "u":
             builder.add_16bit_uint(int(value))
